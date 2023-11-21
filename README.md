@@ -41,3 +41,6 @@ Elle retournera un message: "``Hello ${prenom}``"
 5. Coller le contenu dans le fichier .env
 6. remplacer les valeurs de developpement par les valeur de votre base de donnée local
 7. Executer la commande: ```yarn run dev```
+
+### Liens documentation swagger
+```http://localhost:${port}/docs```
