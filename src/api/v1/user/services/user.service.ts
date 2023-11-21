@@ -1,9 +1,6 @@
 import createHttpError from "http-errors";
 
 import PasswordHelpers from "../../../../helpers/password.helper";
-import GeneralHelpers from "../../../../helpers/general.helper";
-
-import { UserType } from "../../../../interfaces/token-payload.interface";
 
 import { UserValidationMessages } from "../validations/user.validation";
 import User from "../../../../models/user";
