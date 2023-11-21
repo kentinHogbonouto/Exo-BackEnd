@@ -30,3 +30,14 @@ Elle retournera un message: "``Hello ${prenom}``"
 | DELETE | /users/:id | Supprimer un utilisateur               |
 | POST   | /login     | Se connecter                           |
 | GET    | /private   | Vérifier si l'utilisateur est connecté |
+
+
+
+### Demarer le projet
+1. git pull 
+2. yarn install
+3. creer un .env à la racine du projet
+4. Copier le contenu du fichier .env.example
+5. Coller le contenu dans le fichier .env
+6. remplacer les valeurs de developpement par les valeur de votre base de donnée local
+7. Executer la commande: ```yarn run dev```
