@@ -6,6 +6,7 @@ import swaggerUI from "swagger-ui-express";
 import swaggerJsDoc from "swagger-jsdoc";
 import { expressjwt } from "express-jwt";
 import createHttpError from "http-errors";
+import path from "path";
 
 import swaggerConfigs from "./swagger.configs";
 import expressJwtConfigs from "./express-jwt.configs";
@@ -20,6 +21,7 @@ export default class ApplicationConfigs {
   static init(app: Application): void {
     app.use(express.json());
     app.use(express.urlencoded({ extended: true }));
+    app.use(express.static(path.join(__dirname, "..", "..", "public")));
     app.use(
       cors({
         origin: "*",

@@ -11,14 +11,36 @@ import User from "../../../../models/user";
 export default class UserService {
   constructor() {}
 
-  public async findAll(): Promise<any> {
-    let user: any = await User.findAll();
+  public async findAll(page: number, pageSize: number): Promise<any> {
+    const limit = page;
+    const offset = pageSize;
 
-    if (user.length === 0) {
+    console.log("offset: ", offset, " limit: ", limit);
+
+    let users: any;
+    if (page && pageSize) {
+      users = await User.findAll({
+        offset: Number(offset),
+        limit: Number(limit),
+      });
+    }
+    users = await User.findAll();
+
+    const countDocuments = await User.count();
+
+    if (users.length === 0) {
       throw new createHttpError.NotFound("Users not found.");
     }
 
-    return { user };
+    return {
+      users,
+      pageInfo: {
+        totalItems: countDocuments,
+        totalPages: Math.ceil(countDocuments / pageSize),
+        currentPage: page,
+        pageSize,
+      },
+    };
   }
 
   public async findOne(id: string): Promise<any> {
@@ -71,7 +93,6 @@ export default class UserService {
   }
 
   public async private(id: string): Promise<any> {
-
     let findUserById: any = await User.findOne({
       where: { id },
     });

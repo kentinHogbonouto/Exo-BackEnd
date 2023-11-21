@@ -21,6 +21,17 @@ export default function UserRoutes(userController: UserController) {
    * @swagger
    * /api/v1/users/list:
    *   get:
+   *     parameters:
+   *       - name: page
+   *         in: query
+   *         required: false
+   *         schema:
+   *           type: number
+   *       - name: pageSize
+   *         in: query
+   *         required: false
+   *         schema:
+   *           type: number
    *     summary: Récupérer la liste des utilisateurs.
    *     tags: [User Management]
    *     responses:

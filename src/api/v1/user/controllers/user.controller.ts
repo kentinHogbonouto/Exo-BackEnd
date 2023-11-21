@@ -9,8 +9,12 @@ export default class UserController {
   constructor(private userService: UserService) {}
 
   public async findAll(req: Request, res: Response, next: NextFunction) {
+    const { page, pageSize }: any = req?.query;
     try {
-      let users: any = await this.userService.findAll();
+      let users: any = await this.userService.findAll(
+        page,
+        pageSize
+      );
 
       res
         .status(200)
@@ -66,7 +70,7 @@ export default class UserController {
       const sub: any = req.auth;
 
       console.log("sub: ", sub);
-      
+
       let user: any = await this.userService.private(sub.userId);
 
       res
